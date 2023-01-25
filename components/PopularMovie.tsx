@@ -1,7 +1,8 @@
+import { ReactNode } from "react";
 import MovieCard from "./MovieCard";
 import ScrollAreaDemo from "./Scroll";
 
-const PopularMovie = ({ movies }) => {
+const PopularMovie = ({ movies }: { movies: ReactNode }) => {
   return (
     <div className="px-5 h-[50-vh]">
       <h2 className="text-lg text-slate-50 font-medium mb-5">Popular</h2>

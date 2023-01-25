@@ -1,12 +1,10 @@
-import Meta from "../components/Meta";
+import Meta from "../../components/Meta";
 
-const contact = () => {
+export default function BlogPage() {
   return (
     <div className="p-5">
       <Meta title="Contact" />
       <h1 className="text-5xl">Contact</h1>
     </div>
   );
-};
-
-export default contact;
+}

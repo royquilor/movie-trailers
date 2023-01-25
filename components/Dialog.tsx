@@ -1,8 +1,9 @@
 "use client";
 
 import * as Dialog from "@radix-ui/react-dialog";
+import { ReactNode } from "react";
 
-const DialogDemo = ({ children }) => (
+const DialogDemo = ({ children }: { children: ReactNode }) => (
   <Dialog.Root>
     <Dialog.Trigger className="bg-black/50 py-3 px-10 text-lg font-semibold rounded-full text-white inline-flex items-center justify-center outline-none focus:outline-none mb-8">
       Play
