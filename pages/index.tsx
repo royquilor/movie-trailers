@@ -1,11 +1,13 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import { Inter } from '@next/font/google'
+import axios from "axios";
+import Head from "next/head";
+import { useState } from "react";
+import Hero from "../components/Hero";
+import PopularMovie from "../components/PopularMovie";
+import { server } from "../config";
 
-
-const inter = Inter({ subsets: ['latin'] })
-
-export default function Home() {
+export default function Home({ movies }) {
+  console.log(movies);
+  const [selectedMovie, setSelectedMovie] = useState({});
   return (
     <>
       <Head>
@@ -14,9 +16,26 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main>
-        <h1 className="text-5xl font-semibold">Hello world</h1>
+      <main className="bg-black min-h-screen">
+        <Hero />
+        <h1>{selectedMovie.title}</h1>
+        <PopularMovie movies={movies.results} />
       </main>
     </>
-  )
+  );
+}
+
+// setSelectedMovie(movies.results[0]);
+
+export async function getStaticProps() {
+  const res = await axios(
+    `${server}/popular?api_key=${process.env.API_KEY}&language=en-US&page=1`
+    // `${server}/popular?api_key=${process.env.API_KEY}&append_to_response=videos,images`
+    // https://api.themoviedb.org/3/movie/{movie_id}/videos?api_key=<<api_key>>&language=en-US
+  );
+  const movies = res.data;
+
+  return {
+    props: { movies },
+  };
 }

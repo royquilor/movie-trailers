@@ -1,5 +1,5 @@
 /** @type {import('tailwindcss').Config} */
-const { fontFamily } = require('tailwindcss/defaultTheme')
+const { fontFamily } = require("tailwindcss/defaultTheme");
 
 module.exports = {
   content: [
@@ -9,7 +9,10 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['var(--font-mona-sans)', ...fontFamily.sans],
+        sans: ["var(--font-mona-sans)", ...fontFamily.sans],
+      },
+      spacing: {
+        "2/3": "100%",
       },
     },
   },
@@ -17,8 +20,8 @@ module.exports = {
     aspectRatio: false,
   },
   plugins: [
-    require('@tailwindcss/typography'),
-    require('@tailwindcss/forms'),
-    require('@tailwindcss/aspect-ratio'),
+    require("@tailwindcss/typography"),
+    require("@tailwindcss/forms"),
+    require("@tailwindcss/aspect-ratio"),
   ],
-}
+};
