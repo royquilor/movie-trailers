@@ -1,3 +1,5 @@
+"use client";
+
 import axios from "axios";
 import Image from "next/image";
 import React from "react";
@@ -9,7 +11,7 @@ import PopoverDemo from "../../../components/Popover";
 import Link from "next/link";
 
 const Movie = ({ movie }) => {
-  console.log(movie);
+  // console.log(movie);
   const trailer = movie.videos.results.find((vid) =>
     vid.name.includes("railer")
   );
@@ -74,10 +76,10 @@ const Movie = ({ movie }) => {
           <Meta title={movie.title} />
           <div className="flex flex-col gap-y-4">
             <h1 className="text-4xl text-white">{movie.title}</h1>
-            <p className="text-lg text-white">{movie.overview}</p>
-            <p className="text-base text-white">
+            <div className="text-lg text-white">{movie.overview}</div>
+            <div className="text-base text-white">
               <span className="">Release</span> {movie.release_date}
-            </p>
+            </div>
             <div className="text-xs uppercase tracking-wider text-white">
               <span>{movie.genres.map((genre) => genre.name).join(", ")}</span>
             </div>

@@ -12,7 +12,6 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" className={`${myFont.variable} font-sans`}>
       <head />
-      <Nav />
       <body>{children}</body>
     </html>
   );

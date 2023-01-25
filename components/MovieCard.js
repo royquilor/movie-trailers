@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ReactNode } from "react";
 
-const MovieCard = ({ movie }: { movie: ReactNode }) => {
+const MovieCard = ({ movie }) => {
   return (
     <Link href={`/movie/${movie.id}`} className="hover:scale-95 transition-all">
       <div className="flex flex-col gap-y-3">
