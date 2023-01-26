@@ -7,14 +7,14 @@ import { server } from "../../../config";
 import Meta from "../../../components/Meta";
 import YouTube from "react-youtube";
 import DialogDemo from "../../../components/Dialog";
-import PopoverDemo from "../../../components/Popover";
 import Link from "next/link";
 
 const Movie = ({ movie }) => {
-  // console.log(movie);
+  console.log(movie);
   const trailer = movie.videos.results.find((vid) =>
-    vid.name.includes("railer")
+    vid.type.includes("Trailer")
   );
+  console.log(trailer);
   const opts = {
     height: "390",
     width: "640",
@@ -29,9 +29,10 @@ const Movie = ({ movie }) => {
   };
   return (
     <div className="bg-black min-h-screen">
+      <Meta title={movie.title} />
       <Link
         href="/"
-        className="bg-black/10 absolute z-10 top-4 left-4 h-12 w-12 text-xs font-semibold rounded-full text-white inline-flex items-center justify-center outline-none focus:outline-none"
+        className="bg-black/10 absolute z-10 top-5 left-5 h-12 w-12 text-xs font-semibold rounded-full text-white inline-flex items-center justify-center outline-none focus:outline-none"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -50,15 +51,16 @@ const Movie = ({ movie }) => {
         <Image
           className="mix-blend-overlay"
           src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
-          alt=""
+          alt="{movie.title}"
+          priority
           fill={true}
           style={{ objectFit: "cover" }}
         />
       </div>
 
       {/* <div className="absolute bottom-0 h-[100vh] z-10 w-full bg-gradient-to-t from-black to-transparent"></div> */}
-      <div className="flex relative p-20 max-w-3xl min-h-screen items-end justify-center">
-        <div className="flex-1">
+      <div className="flex relative p-5 lg:p-10 xl:p-20 w-full min-h-screen items-end justify-center">
+        <div>
           <DialogDemo>
             <YouTube
               videoId={trailer.key}
@@ -66,22 +68,29 @@ const Movie = ({ movie }) => {
               className="[&_iframe]:w-full [&_iframe]:h-full [&_iframe]:aspect-video h-[80vh]"
             />
           </DialogDemo>
-          {/* <PopoverDemo>
-            <YouTube
-              videoId={trailer.key}
-              opts={opts}
-              className="[&_iframe]:w-full [&_iframe]:h-full [&_iframe]:aspect-video h-[80vh]"
-            />
-          </PopoverDemo> */}
-          <Meta title={movie.title} />
-          <div className="flex flex-col gap-y-4">
-            <h1 className="text-4xl text-white">{movie.title}</h1>
-            <div className="text-lg text-white">{movie.overview}</div>
-            <div className="text-base text-white">
-              <span className="">Release</span> {movie.release_date}
+
+          <div className="grid lg:grid-cols-12 gap-y-4 gap-x-10">
+            <div className="col-span-4">
+              <h1 className="text-3xl lg:text-5xl text-white">{movie.title}</h1>
             </div>
-            <div className="text-xs uppercase tracking-wider text-white">
-              <span>{movie.genres.map((genre) => genre.name).join(", ")}</span>
+            <div className="col-span-5 text-base lg:text-lg text-white">
+              {movie.overview}
+            </div>
+            <div className="col-span-3 text-sm text-white font-medium">
+              <div className="grid grid-cols-3 gap-x-4 mb-2">
+                <div className="col-span-1 lg:text-right">Release</div>
+                <div className="col-span-2">{movie.release_date}</div>
+              </div>
+              <div className="grid grid-cols-3 gap-x-4 mb-2">
+                <div className="col-span-1 lg:text-right">Runtime</div>
+                <div className="col-span-2">{movie.runtime} mins</div>
+              </div>
+              <div className="grid grid-cols-3 gap-x-4">
+                <div className="col-span-1 lg:text-right">Genres</div>
+                <div className="col-span-2">
+                  {movie.genres.map((genre) => genre.name).join(", ")}
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -93,11 +102,10 @@ const Movie = ({ movie }) => {
 export async function getStaticProps(context) {
   const { id } = context.params;
   const res = await axios(
-    // `${server}/${id}?api_key=${process.env.API_KEY}&language=en-US&page=1`
-    `${server}/${id}?api_key=${process.env.API_KEY}&append_to_response=videos`
+    `${server}/${id}?api_key=${process.env.NEXT_PUBLIC_API_KEY}&append_to_response=videos`
   );
   const movie = res.data;
-
+  console.log(movie);
   return {
     props: { movie },
   };
@@ -105,13 +113,13 @@ export async function getStaticProps(context) {
 
 export async function getStaticPaths() {
   const res = await axios(
-    `${server}/popular?api_key=${process.env.API_KEY}&language=en-US&page=1`
+    `${server}/popular?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US&page=1`
   );
   const movies = res.data.results;
 
   const ids = movies.map((movie) => movie.id);
   const paths = ids.map((id) => ({ params: { id: id.toString() } }));
-
+  // console.log(movies);
   return {
     paths,
     fallback: false,

@@ -1,10 +1,16 @@
 import Head from "next/head";
 
-const Meta = ({ title, description, keywords }) => {
+interface Props {
+  title: string;
+  description: string;
+  keywords: string;
+}
+
+const Meta = ({ title, description, keywords }: Props) => {
   return (
     <Head>
       <title>Create Next App</title>
-      <meta name="keywwords" content={keywords} />
+      <meta name="keywords" content={keywords} />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <meta name="description" content={description} />
       <meta charSet="utf-8" />
@@ -14,10 +20,10 @@ const Meta = ({ title, description, keywords }) => {
   );
 };
 
-Meta.defaultProps = {
-  title: "Minimal80s",
-  keywords: "Movie app, 80s",
-  description: "80s movies",
-};
+// Meta.defaultProps = {
+//   title: "Minimal80s",
+//   keywords: "Movie app, 80s",
+//   description: "80s movies",
+// };
 
 export default Meta;
