@@ -24,7 +24,7 @@ function Hero() {
   // console.log(heroMovie.id);
   return (
     <div className="relative flex h-[60vh] md:h-[65vh] xh-[40vh]">
-      <div className="top-0 h-full ">
+      <div className="top-0 h-full w-full">
         <div className="flex relative w-full md:w-3/4 md:left-1/4">
           <Image
             src={`https://image.tmdb.org/t/p/original/${heroMovie?.backdrop_path}`}

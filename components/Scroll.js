@@ -2,7 +2,7 @@ import * as ScrollArea from "@radix-ui/react-scroll-area";
 
 const ScrollAreaDemo = ({ children }) => (
   <ScrollArea.Root className="ScrollAreaRoot">
-    <ScrollArea.Viewport className="ScrollAreaViewport pb-5">
+    <ScrollArea.Viewport className="ScrollAreaViewport pb-5 pl-5 pt-5">
       {children}
     </ScrollArea.Viewport>
     <ScrollArea.Scrollbar

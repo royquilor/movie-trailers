@@ -7,7 +7,10 @@ import { motion } from "framer-motion";
 
 const MovieCard = ({ movie }) => {
   return (
-    <Link href={`/movie/${movie.id}`} className="hover:scale-95 transition-all">
+    <Link
+      href={`/movie/${movie.id}`}
+      className="hover:scale-105 outline outline-2 outline-transparent hover:outline-white rounded-md overflow-hidden transition-all"
+    >
       <div className="flex flex-col gap-y-3">
         <motion.div
           initial={{ opacity: 0, x: 20 }}
@@ -21,14 +24,10 @@ const MovieCard = ({ movie }) => {
             // placeholder="blur"
             width={500}
             height={750}
-            className="rounded-xl"
+            className=""
             // style={{ objectFit: "cover" }}
           />
         </motion.div>
-        <div>
-          {/* <div className="text-sm text-slate-50">{movie.title}</div> */}
-          {/* <div className="text-xs text-slate-400">{movie.release_date}</div> */}
-        </div>
       </div>
     </Link>
   );
