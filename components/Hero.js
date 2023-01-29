@@ -3,8 +3,7 @@
 import axios from "../axios";
 import React, { useEffect, useState } from "react";
 import requests from "../Requests";
-import YouTube from "react-youtube";
-import Link from "next/link";
+import Image from "next/image";
 
 function Hero() {
   const [heroMovie, setMovie] = useState([]);
@@ -24,30 +23,32 @@ function Hero() {
   console.log(heroMovie);
   // console.log(heroMovie.id);
   return (
-    <div
-      className="relative flex flex-1 flex-col px-5 justify-end h-[60vh]"
-      style={{
-        backgroundImage: `url("https://image.tmdb.org/t/p/original/${heroMovie?.backdrop_path}")`,
-        backgroundSize: "cover",
-        backgroundPosition: "top center",
-      }}
-    >
-      <div className="flex flex-col relative z-10 gap-y-4 py-10 max-w-xl ">
-        {/* <Link
-          href={`/movie/${heroMovie.id}`}
-          className="bg-white py-2 px-8 text-base lg:py-3 lg:px-10 lg:text-lg font-semibold rounded-full text-slate-900 inline-flex items-center justify-center outline-none focus:outline-none max-w-fit mb-5"
-        >
-          Info
-        </Link> */}
-        <h1 className="text-4xl lg:text-6xl text-slate-50">
+    <div className="relative flex h-[60vh] md:h-[65vh] xh-[40vh]">
+      <div className="top-0 h-full ">
+        <div className="flex relative w-full md:w-3/4 md:left-1/4">
+          <Image
+            src={`https://image.tmdb.org/t/p/original/${heroMovie?.backdrop_path}`}
+            alt=""
+            // fill={true}
+            width={3840}
+            height={2160}
+            // placeholder="blur"
+            className="w-full h-full"
+            // style={{ objectFit: "cover" }}
+          />
+          <div className="h-full w-3/4 absolute bottom-0 left-0 bg-gradient-to-r from-black to-transparent"></div>
+          <div className="h-[30vh] w-full absolute bottom-0 left-0 bg-gradient-to-t from-black to-transparent"></div>
+        </div>
+      </div>
+      <div className="absolute left-0 bottom-0 flex flex-col h-full xbg-red-500 justify-end z-10 gap-y-4 px-5 lg:pl-16 xpy-10 max-w-xl ">
+        <h1 className="text-4xl lg:text-7xl text-slate-50">
           {heroMovie?.title || heroMovie?.name || heroMovie?.original_name}
         </h1>
         <div className="text-base text-slate-300 line-clamp-2">
           {heroMovie?.overview}
         </div>
       </div>
-
-      <div className="h-[30vh] w-full absolute bottom-0 left-0 bg-gradient-to-t from-black to-transparent"></div>
+      {/* <div className="h-full xw-full absolute top-0 left-0 bg-gradient-to-r from-black to-transparent"></div> */}
     </div>
   );
 }

@@ -22,10 +22,10 @@ function Row({ title, fetchUrl }) {
   if (!movies) return null;
 
   return (
-    <div className="px-5 h-[40-vh] relative">
+    <div className="pb-5 pl-5 lg:pl-16 h-[40-vh] relative mt-10">
       <h2 className="text-white font-medium mb-2">{title}</h2>
       <ScrollAreaDemo>
-        <div className="flex [&_div]:w-56 gap-x-5 relative">
+        <div className="flex [&_div]:w-72 gap-x-5 relative">
           {movies.map((movie) => (
             <MovieCard movie={movie} key={movie.id} />
           ))}
