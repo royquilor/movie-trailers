@@ -31,7 +31,6 @@ function Row({ title, fetchUrl }) {
           ))}
         </div>
       </ScrollAreaDemo>
-      {/* <div className="absolute z-10 bg-gradient-to-r from-transparent to-black h-full w-56 right-0 bottom-0"></div> */}
     </div>
   );
 }

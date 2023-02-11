@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { ReactNode } from "react";
 import { motion } from "framer-motion";
 
 const MovieCard = ({ movie }) => {
@@ -20,12 +19,9 @@ const MovieCard = ({ movie }) => {
           <Image
             src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
             alt=""
-            // fill={true}
-            // placeholder="blur"
             width={500}
             height={750}
             className=""
-            // style={{ objectFit: "cover" }}
           />
         </motion.div>
       </div>

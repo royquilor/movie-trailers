@@ -20,10 +20,4 @@ const Meta = ({ title, description, keywords }: Props) => {
   );
 };
 
-// Meta.defaultProps = {
-//   title: "Minimal80s",
-//   keywords: "Movie app, 80s",
-//   description: "80s movies",
-// };
-
 export default Meta;

@@ -20,21 +20,19 @@ function Hero() {
     }
     fetchData();
   }, []);
-  console.log(heroMovie);
-  // console.log(heroMovie.id);
   return (
-    <div className="relative flex h-[60vh] md:h-[65vh] xh-[40vh]">
+    <div
+      className="relative flex h-[60vh] md:h-[65vh] xh-[40vh]"
+      style={{ marginTop: "-60px" }}
+    >
       <div className="top-0 h-full w-full">
         <div className="flex relative w-full md:w-3/4 md:left-1/4">
           <Image
             src={`https://image.tmdb.org/t/p/original/${heroMovie?.backdrop_path}`}
             alt=""
-            // fill={true}
             width={3840}
             height={2160}
-            // placeholder="blur"
             className="w-full h-full"
-            // style={{ objectFit: "cover" }}
           />
           <div className="h-full w-3/4 absolute bottom-0 left-0 bg-gradient-to-r from-black to-transparent"></div>
           <div className="h-[30vh] w-full absolute bottom-0 left-0 bg-gradient-to-t from-black to-transparent"></div>
@@ -48,7 +46,6 @@ function Hero() {
           {heroMovie?.overview}
         </div>
       </div>
-      {/* <div className="h-full xw-full absolute top-0 left-0 bg-gradient-to-r from-black to-transparent"></div> */}
     </div>
   );
 }

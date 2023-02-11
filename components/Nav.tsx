@@ -6,7 +6,7 @@ import NavigationMenuDemo from "./NavigationMenu";
 
 const Nav = () => {
   return (
-    <div className="fixed left-0 top-0 z-20 py-5 px-5 lg:px-16 flex w-full gap-x-5 text-white text-sm font-semibold justify-between">
+    <div className="relative z-20 py-5 px-5 lg:px-16 flex w-full gap-x-5 text-white text-sm font-semibold justify-between">
       <div className="flex gap-x-5">
         <Link href="/">Trailers</Link>
         <AboutDialog text="About">
@@ -28,7 +28,6 @@ const Nav = () => {
           </div>
         </AboutDialog>
       </div>
-      {/* <div className=""></div> */}
     </div>
   );
 };

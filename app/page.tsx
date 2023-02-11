@@ -17,7 +17,6 @@ export default function Home() {
         <Nav />
         <Hero />
         <Row title="Trending" fetchUrl={requests.fetchTrending} />
-        {/* <PopularMovie movies={request.results} /> */}
       </main>
     </motion.div>
   );
