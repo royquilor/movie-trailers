@@ -10,11 +10,9 @@ import DialogDemo from "../../../components/Dialog";
 import Link from "next/link";
 
 const Movie = ({ movie }) => {
-  console.log(movie);
   const trailer = movie.videos.results.find((vid) =>
     vid.type.includes("Trailer")
   );
-  console.log(trailer);
   const opts = {
     height: "390",
     width: "640",
@@ -48,6 +46,7 @@ const Movie = ({ movie }) => {
         </svg>
       </Link>
       <div className="absolute top-0 left-0 x-z-10 h-[96vh] w-screen bg-gradient-to-t from-black to-white/50">
+      {movie.backdrop_path && (
         <Image
           className="mix-blend-overlay"
           src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
@@ -56,6 +55,7 @@ const Movie = ({ movie }) => {
           fill={true}
           style={{ objectFit: "cover" }}
         />
+        )}
       </div>
 
       {/* <div className="absolute bottom-0 h-[100vh] z-10 w-full bg-gradient-to-t from-black to-transparent"></div> */}
@@ -105,7 +105,6 @@ export async function getStaticProps(context) {
     `${server}/${id}?api_key=${process.env.NEXT_PUBLIC_API_KEY}&append_to_response=videos`
   );
   const movie = res.data;
-  console.log(movie);
   return {
     props: { movie },
   };
