@@ -3,8 +3,13 @@
 import * as Dialog from "@radix-ui/react-dialog";
 import { ReactNode } from "react";
 
-const DialogDemo = ({ children }: { children: ReactNode }) => (
-  <Dialog.Root>
+type DialogDemoProps = {
+  children: ReactNode;
+  onClose?: () => void; // Adding an optional onClose prop
+};
+
+const DialogDemo = ({ children, onClose }: DialogDemoProps ) => (
+  <Dialog.Root onOpenChange={onClose}>
     <Dialog.Trigger className="bg-white py-2 px-8 text-base lg:py-3 lg:px-10 lg:text-lg font-semibold rounded-full text-slate-900 inline-flex items-center justify-center outline-none focus:outline-none max-w-fit mb-8">
       Play
     </Dialog.Trigger>
