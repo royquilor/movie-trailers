@@ -8,9 +8,9 @@ module.exports = {
   ],
   theme: {
     extend: {
-      fontFamily: {
-        sans: ["var(--font-mona-sans)", ...fontFamily.sans],
-      },
+      // fontFamily: {
+      //   sans: ["var(--font-mona-sans)", ...fontFamily.sans],
+      // },
       spacing: {
         "2/3": "100%",
       },

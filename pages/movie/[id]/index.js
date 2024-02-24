@@ -58,7 +58,6 @@ const Movie = ({ movie }) => {
         )}
       </div>
 
-      {/* <div className="absolute bottom-0 h-[100vh] z-10 w-full bg-gradient-to-t from-black to-transparent"></div> */}
       <div className="flex relative p-5 lg:p-10 xl:p-20 w-full min-h-screen items-end justify-center">
         <div>
           <DialogDemo>

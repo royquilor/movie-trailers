@@ -28,7 +28,7 @@
     "components/Scroll.js",
     "components/Row.js",
     "components/PopularMovie.js",
-    "components/Hero.js",
+    "components/Hero.tsx",
     "components/MovieCard.js",
     "app/[id]/index.js"
   ],
